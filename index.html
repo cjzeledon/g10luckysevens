@@ -18,42 +18,46 @@
 
 <body onload="hideResults()">
 
-  <section>
+  <section class="container">
 
-    <header>
-      <h1>Lucky Sevens Game</h1>
+    <header class="row">
+      <h1 class="h1 mx-auto">Lucky Sevens</h1>
     </header>
 
-    <article id="game">
-      <form name="gameForm">
+    <article id="game" class="row">
+      <form name="gameForm" class="mx-auto">
         <label for="startingBet">Starting Bet:</label>
         <input type="number" id="startingBet" name="startingBet" placeholder="$0.00">
-        <button type="button" value="Play" id="play" onclick="playGame()">Play</button>
+        <div class="row">
+          <button type="button" value="Play" id="play" class="mx-auto" onclick="playGame()">Play</button>
+        </div>
       </form>
     </article>
 
-    <article id="results">
-      <h1>Results</h1>
-      <table>
-        <tbody>
-          <tr>
-            <td>Starting Bet:</td>
-            <td><span id="resultsStartingBet"></span></td>
-          </tr>
-          <tr>
-            <td>Total Rolls Before Going Broke:</td>
-            <td><span id="resultsTotalRollBeforeBroke"></span></td>
-          </tr>
-          <tr>
-            <td>Highest Amount Won:</td>
-            <td><span id="resultsHighestAmountWon"></span></td>
-          </tr>
-          <tr>
-            <td>Roll Count at Highest Amount Won:</td>
-            <td><span id="resultsRollCountHighestAmountWon"></span></td>
-          </tr>
-        </tbody>
-      </table>
+    <article id="results" class="row">
+      <div class="mx-auto">
+        <h1 class="h1 text-center border-top mt-3">Results</h1>
+        <table class="table table-striped table-hover table-responsive">
+          <tbody>
+            <tr>
+              <td scope="row">Starting Bet:</td>
+              <td><span id="resultsStartingBet"></span></td>
+            </tr>
+            <tr>
+              <td scope="row">Total Rolls Before Going Broke:</td>
+              <td><span id="resultsTotalRollBeforeBroke"></span></td>
+            </tr>
+            <tr>
+              <td scope="row">Highest Amount Won:</td>
+              <td><span id="resultsHighestAmountWon"></span></td>
+            </tr>
+            <tr>
+              <td scope="row">Roll Count at Highest Amount Won:</td>
+              <td><span id="resultsRollCountHighestAmountWon"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </article>
 
   </section>

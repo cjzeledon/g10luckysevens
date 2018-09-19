@@ -27,17 +27,26 @@ function playGame() {
     var money = parseInt(startingBet);
     const tallyMoney = [];
 
+    // Testing these codes
+    const tallyMoneyWon = [];
+    const tallyMoneyLose = [];
+    var totalRolls = 0;
+
     while (money > 0) {
       var dice1 = rollTheDice();
       var dice2 = rollTheDice();
       var rolledDice = dice1 + dice2;
 
       if (rolledDice != 7) {
+        totalRolls++
         money -= 1;
         tallyMoney.push(money);
+        tallyMoneyLose.push(money);
       } else {
+        totalRolls++
         money += 4;
         tallyMoney.push(money);
+        tallyMoneyWon.push(money);
       }
     }
 
@@ -55,7 +64,9 @@ function playGame() {
 
     console.log("Starting Bet: " + startingBet);
     console.log("Current Bet: " + money);
-    console.log("Array of Money Held: " + tallyMoney);
+    console.log("Array of All Money Held: " + tallyMoney);
+    console.log("Array of Money Won: " + tallyMoneyWon);
+    console.log("Array of Money Lost: " + tallyMoneyLose);
     console.log("First dice is: " + dice1);
     console.log("Second dice is: " + dice2);
     console.log("Sum of rolled dice is: " + rolledDice);
@@ -64,39 +75,19 @@ function playGame() {
     console.log("Held Most Money: " + heldMostMoney);
     console.log("Index of Tally Money Array That Held Most Money: " + getIndexOfTallyMoney);
     console.log("Roll Count At Highest Amount Won: " + rollCountToHighestAmount);
+    console.log("Total Rolls: " + totalRolls);
 
     function showResults() {
       document.getElementById("results").style.visibility = "visible";
-
-      // var tableStartingBet = document.getElementById("resultsStartingBet");
-      // var tableTotalRollBeforeBroke = document.getElementById("resultsTotalRollBeforeBroke");
-      // var tableHighestAmountWon = document.getElementById("resultsHighestAmountWon");
-      // var tableRollCountHighestAmountWon = document.getElementById("resultsRollCountHighestAmountWon");
-      // var changeButtonText = document.getElementById("play");
-      //
-      // var nodeStartingBet = document.createTextNode("$" + startingBet + ".00");
-      // var nodeTotalRollBeforeBroke = document.createTextNode(tallyRolls);
-      // var nodeHighestAmountWon = document.createTextNode("$" + sumofMoney + ".00");
-      // var nodeRollCountHighestAmountWon = document.createTextNode(rollCountToHighestAmount);
-      // var nodeButtonText = document.createTextNode(" Again");
-      //
-      // tableStartingBet.appendChild(nodeStartingBet);
-      // // tableStartingBet.replaceChild(nodeStartingBet, tableStartingBet.value); // Doesn't work
-      // tableTotalRollBeforeBroke.appendChild(nodeTotalRollBeforeBroke);
-      // tableHighestAmountWon.appendChild(nodeHighestAmountWon);
-      // tableRollCountHighestAmountWon.appendChild(nodeRollCountHighestAmountWon);
-      // changeButtonText.appendChild(nodeButtonText);
-
-      document.getElementById("resultsStartingBet").textContent = "$" + startingBet + ".00";
+      document.getElementById("resultsStartingBet").textContent = "$" + startingBet;
       document.getElementById("resultsTotalRollBeforeBroke").textContent = tallyRolls;
-      document.getElementById("resultsHighestAmountWon").textContent = "$" + sumofMoney + ".00";
+      document.getElementById("resultsHighestAmountWon").textContent = "$" + heldMostMoney;
       document.getElementById("resultsRollCountHighestAmountWon").textContent = rollCountToHighestAmount;
+
+      // Change to calling the element tag instead of its Id since it "should" only be called on once, not twice
       document.getElementById("play").textContent = "Play Again";
-
-
-
+      document.getElementById("play").type = "reset";
     }
-
     showResults();
   }
 }
