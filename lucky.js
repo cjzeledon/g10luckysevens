@@ -1,3 +1,7 @@
+function hideResults() {
+  document.getElementById("results").style.visibility = "hidden";
+}
+
 function validated() {
   var bet = document.forms["gameForm"]["startingBet"].value;
 
@@ -35,8 +39,6 @@ function playGame() {
         money += 4;
         tallyMoney.push(money);
       }
-      // return console.log("Current Bet: " + money + "\n" + "Starting Bet: " + startingBet + "\n" + "First Dice is: " + dice1 + "\n" + "Second Dice is: " + dice2 + "\n" + "Sum of rolled dice is: " + rolledDice + "\n" + "Money is now " + money + "\n" + "Array of Money Held: " + tallyMoney);
-      // console.log("Money is now: " + money);
     }
 
     // Keeps track of how many rolls were taken
@@ -51,7 +53,6 @@ function playGame() {
     var getIndexOfTallyMoney = tallyMoney.indexOf(heldMostMoney);
     var rollCountToHighestAmount = getIndexOfTallyMoney + 1;
 
-
     console.log("Starting Bet: " + startingBet);
     console.log("Current Bet: " + money);
     console.log("Array of Money Held: " + tallyMoney);
@@ -63,5 +64,39 @@ function playGame() {
     console.log("Held Most Money: " + heldMostMoney);
     console.log("Index of Tally Money Array That Held Most Money: " + getIndexOfTallyMoney);
     console.log("Roll Count At Highest Amount Won: " + rollCountToHighestAmount);
+
+    function showResults() {
+      document.getElementById("results").style.visibility = "visible";
+
+      // var tableStartingBet = document.getElementById("resultsStartingBet");
+      // var tableTotalRollBeforeBroke = document.getElementById("resultsTotalRollBeforeBroke");
+      // var tableHighestAmountWon = document.getElementById("resultsHighestAmountWon");
+      // var tableRollCountHighestAmountWon = document.getElementById("resultsRollCountHighestAmountWon");
+      // var changeButtonText = document.getElementById("play");
+      //
+      // var nodeStartingBet = document.createTextNode("$" + startingBet + ".00");
+      // var nodeTotalRollBeforeBroke = document.createTextNode(tallyRolls);
+      // var nodeHighestAmountWon = document.createTextNode("$" + sumofMoney + ".00");
+      // var nodeRollCountHighestAmountWon = document.createTextNode(rollCountToHighestAmount);
+      // var nodeButtonText = document.createTextNode(" Again");
+      //
+      // tableStartingBet.appendChild(nodeStartingBet);
+      // // tableStartingBet.replaceChild(nodeStartingBet, tableStartingBet.value); // Doesn't work
+      // tableTotalRollBeforeBroke.appendChild(nodeTotalRollBeforeBroke);
+      // tableHighestAmountWon.appendChild(nodeHighestAmountWon);
+      // tableRollCountHighestAmountWon.appendChild(nodeRollCountHighestAmountWon);
+      // changeButtonText.appendChild(nodeButtonText);
+
+      document.getElementById("resultsStartingBet").textContent = "$" + startingBet + ".00";
+      document.getElementById("resultsTotalRollBeforeBroke").textContent = tallyRolls;
+      document.getElementById("resultsHighestAmountWon").textContent = "$" + sumofMoney + ".00";
+      document.getElementById("resultsRollCountHighestAmountWon").textContent = rollCountToHighestAmount;
+      document.getElementById("play").textContent = "Play Again";
+
+
+
+    }
+
+    showResults();
   }
 }
