@@ -24,6 +24,7 @@ function playGame() {
 
   if (validated()) {
     const startingBet = document.forms["gameForm"]["startingBet"].value;
+    // Will turn the "string" startingBet to a number startingBet
     var money = parseInt(startingBet);
     const tallyMoney = [];
     // Add the startingBet to the beginning of array of tallyMoney
@@ -57,7 +58,7 @@ function playGame() {
     // Gets the index of the highest money held
     var getIndexOfTallyMoney = tallyMoney.indexOf(heldMostMoney);
 
-    // NOTE: If the highest amount held was the starting money, shouldn't the roll count be 0?
+    // If the highest amount held was the starting money, the roll count should be 0
     if (heldMostMoney == startingBet) {
       var rollCountToHighestAmountHeld = getIndexOfTallyMoney;
     } else {
@@ -70,8 +71,8 @@ function playGame() {
       document.getElementById("resultsTotalRollBeforeBroke").textContent = tallyRolls;
       document.getElementById("resultsHighestAmountHeld").textContent = "$" + heldMostMoney;
       document.getElementById("resultsRollCountHighestAmountHeld").textContent = rollCountToHighestAmountHeld;
-      document.getElementsByTagName("button").textContent = "Play Again";
-      document.getElementsByTagName("button").type = "reset";
+      document.getElementById("play").textContent = "Play Again";
+      document.getElementById("play").type = "reset";
     }
 
     showResults();
