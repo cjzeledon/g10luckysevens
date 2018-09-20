@@ -45,10 +45,7 @@ function playGame() {
       }
     }
 
-
-
     // Keeps track of how many rolls were taken
-
     var tallyRolls = tallyMoney.length - 1;
 
     // Keeps track of the total amount of money held by the user
